@@ -7,7 +7,7 @@ Este proyecto de análisis de datos se centra en **Bellabeat**, una empresa de t
 Se utilizaron herramientas como **SQL (BigQuery)**, **R (ggplot2)** y **Excel**, aplicando el enfoque del proceso analítico propuesto en el curso profesional de Google:  
 *Google Data Analytics Professional Certificate*.
 
-**A modo de aclaración, este proyecto forma parte de una de las opciones de *Capstone projects* de Coursera en el ya mencionado *Google Data Analytics Professional Certificate*, donde se ha elegido trabajar de manera práctica e individualmente en la exploración del análisis de los datos para comenzar un portfolio profesional y técnico**
+**A modo de aclaración, este proyecto forma parte de una de las opciones de *"capstone projects"* de Coursera en el ya mencionado *Google Data Analytics Professional Certificate*, donde se ha elegido trabajar de manera práctica e individualmente en la exploración del análisis de los datos para comenzar un portfolio profesional y técnico**
 
 ## 🧭 Introducción
 
