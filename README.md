@@ -123,8 +123,17 @@ SELECT
 FROM `capstonecaseofstudy.bellabeat_project.daily_activity_final`
 GROUP BY Id
 ORDER BY promedio_pasos_diarios DESC;
+```
 
 A continuación se muestran las primeras filas resultantes de esta consulta:
+
+| Id         | promedio_pasos_diarios | promedio_calorias_diarias |
+|------------|------------------------|---------------------------|
+| 8053475328 | 14784.52               | 2932.02                   |
+| 1503960366 | 11935.78               | 1808.74                   |
+| 7007744171 | 11619.29               | 2570.24                   |
+| 6962181067 | 10679.89               | 2015.38                   |
+| 3977333714 | 10321.52               | 1480.64                   |
 
 
 
@@ -142,8 +151,18 @@ FROM `capstonecaseofstudy.bellabeat_project.hourly_steps_merged`
 GROUP BY hora
 ORDER BY promedio_pasos DESC;
 ```
+A continuación se muestran las primeras filas resultantes de esta consulta:
 
-Los resultados se representaron mediante un gráfico de barras que muestra una mayor concentración de pasos entre las 17 y las 20 hs. Esto puede ser aprovechado por Bellabeat para enviar recordatorios o motivaciones en momentos estratégicos del día.
+| hora | promedio_pasos |
+|------|----------------|
+| 19   | 623.62         |
+| 18   | 573.94         |
+| 17   | 517.28         |
+| 13   | 505.75         |
+| 14   | 496.23         |
+
+
+Los resultados se representaron mediante un gráfico de barras que muestra una mayor concentración de pasos entre las 17 y las 19 h. Esto puede ser aprovechado por Bellabeat para enviar recordatorios o motivaciones en momentos estratégicos del día.
 
 ### 3. ¿Existe una correlación entre pasos diarios, minutos de sueño y calorías quemadas?
 
@@ -158,6 +177,12 @@ FROM `capstonecaseofstudy.bellabeat_project.daily_activity_final` a
 JOIN `capstonecaseofstudy.bellabeat_project.sleep_day_merged_filtered` b
 ON a.Id = b.Id AND DATE(a.ActivityDate) = DATE(b.SleepDay);
 ```
+A continuación se muestran los valores obtenidos:
+
+| corr_pasos_sueno     | corr_pasos_calorias | corr_sueno_calorias   |
+|----------------------|---------------------|------------------------|
+| -0.20007160349257597 | 0.44069190645277467 | -0.027815114588366056 |
+
 
 Los valores de correlación fueron los siguientes:
 
@@ -183,6 +208,15 @@ SELECT
 FROM `capstonecaseofstudy.bellabeat_project.daily_activity_final`
 GROUP BY Id;
 ```
+A continuación se muestra una muestra representativa del resultado:
+
+| Id         | promedio_pasos | nivel_actividad       |
+|------------|----------------|------------------------|
+| 1503960366 | 11935.78       | Altamente activo       |
+| 7007744171 | 11619.29       | Altamente activo       |
+| 8053475328 | 14784.52       | Altamente activo       |
+| 2026352035 | 4960.14        | Moderadamente activo   |
+| 1844505072 | 2876.02        | Sedentario             |
 
 Los resultados se visualizaron con un gráfico de barras para mostrar la distribución de usuarias por segmento. Esta segmentación puede ser útil para campañas dirigidas y recomendaciones personalizadas dentro de la app.
 
@@ -197,6 +231,101 @@ SELECT
   MAX(TotalMinutesAsleep) AS maximo
 FROM `capstonecaseofstudy.bellabeat_project.sleep_day_merged_filtered`;
 ```
+Resultados obtenidos:
+
+| promedio_minutos_sueno | minimo | maximo |
+|------------------------|--------|--------|
+| 419.45                 | 58     | 796    |
+
 
 Los gráficos mostraron una amplia variabilidad en la calidad del sueño entre usuarias. Esto refuerza la idea de que Bellabeat podría ofrecer funciones específicas para ayudar a mejorar la higiene del sueño, como rutinas nocturnas personalizadas o alertas para horarios de descanso óptimos.
 
+## Visualización de resultados
+
+Los resultados obtenidos a través de consultas SQL en BigQuery fueron exportados como archivos `.csv`, que luego se importaron a R para realizar las visualizaciones utilizando `ggplot2`. Cada visualización fue diseñada con el objetivo de responder a las preguntas planteadas en la sección de análisis y mostrar de manera clara las tendencias más relevantes.
+
+### 1. Dispersión entre pasos y calorías por usuario
+
+Esta visualización parte del promedio de pasos y calorías diarios por usuaria. El objetivo es identificar visualmente la existencia de patrones o grupos diferenciados.
+
+```r
+ggplot(estadisticas_1, aes(x = promedio_pasos_diarios, y = promedio_calorias_diarias)) +
+  geom_point(color = "#0072B2", size = 3) +
+  geom_smooth(method = "lm", se = FALSE, color = "darkred", linetype = "dashed") +
+  labs(
+    title = "Relación entre pasos diarios y calorías quemadas",
+    x = "Promedio de pasos diarios",
+    y = "Promedio de calorías quemadas"
+  ) +
+  theme_minimal()
+```
+
+[![Rplotpasosycalorias.png](https://i.postimg.cc/yNbdHWnc/Rplotpasosycalorias.png)](https://postimg.cc/94yVPm6Q)
+
+### 2. Pasos promedio por hora
+
+Este gráfico de barras muestra los pasos promedio agrupados por hora. Permite observar los momentos del día con mayor actividad.
+
+```r
+ggplot(estadisticas_2, aes(x = reorder(hora, -promedio_pasos), y = promedio_pasos)) +
+  geom_col(fill = "#56B4E9") +
+  labs(
+    title = "Promedio de pasos por hora del día",
+    x = "Hora",
+    y = "Promedio de pasos"
+  ) +
+  theme_minimal()
+```
+
+[![Rplot-Pasos.png](https://i.postimg.cc/TYsf1Bnv/Rplot-Pasos.png)](https://postimg.cc/KRtdsq90)
+
+### 3. Correlación entre pasos diarios y minutos de sueño
+
+Este scatterplot muestra la relación entre la cantidad promedio de pasos diarios y el tiempo promedio de sueño por usuaria.
+
+```r
+ggplot(estadisticas_3, aes(x = promedio_pasos_diarios, y = promedio_minutos_sueno)) +
+  geom_point(color = "#009E73", size = 3) +
+  geom_smooth(method = "lm", se = FALSE, color = "darkgreen", linetype = "dashed") +
+  labs(
+    title = "Relación entre pasos diarios y minutos de sueño",
+    x = "Promedio de pasos diarios",
+    y = "Promedio de minutos de sueño"
+  ) +
+  theme_minimal()
+```
+
+[![Rplot-Suenoypasos.png](https://i.postimg.cc/HnDH3MsW/Rplot-Suenoypasos.png)](https://postimg.cc/620DpyvF)
+
+### 4. Distribución de niveles de actividad
+
+A partir de la segmentación de usuarias según su nivel de pasos diarios, se generó un gráfico de barras para observar la distribución entre categorías.
+
+```r
+ggplot(segmentacion_usuarios, aes(x = nivel_actividad, fill = nivel_actividad)) +
+  geom_bar() +
+  labs(
+    title = "Distribución de usuarias según nivel de actividad",
+    x = "Nivel de actividad",
+    y = "Cantidad de usuarias"
+  ) +
+  scale_fill_brewer(palette = "Set2") +
+  theme_minimal()
+```
+
+[![segmentacionplot.png](https://i.postimg.cc/Vky8dQ2C/segmentacionplot.png)](https://postimg.cc/QHqPyP88)
+
+### 5. Distribución de minutos de sueño
+
+Esta visualización muestra la frecuencia de minutos dormidos por noche. Permite identificar tendencias y extremos.
+
+```r
+ggplot(sleep_summary, aes(x = TotalMinutesAsleep)) +
+  geom_histogram(fill = "#E69F00", bins = 30) +
+  labs(
+    title = "Distribución de minutos de sueño",
+    x = "Minutos dormidos por noche",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+```
