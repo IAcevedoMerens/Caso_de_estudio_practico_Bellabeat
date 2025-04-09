@@ -220,7 +220,7 @@ A continuación se muestra una muestra representativa del resultado:
 
 Los resultados se visualizaron con un gráfico de barras para mostrar la distribución de usuarias por segmento. Esta segmentación puede ser útil para campañas dirigidas y recomendaciones personalizadas dentro de la app.
 
-### 5. ¿Cómo se distribuyen los hábitos de sueño entre usuarias?
+### 5. ¿Cómo se distribuyen los hábitos de sueño entre usuarios?
 
 Se generaron estadísticas y visualizaciones de la cantidad de minutos dormidos por día:
 
