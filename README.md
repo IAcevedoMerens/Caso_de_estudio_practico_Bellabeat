@@ -238,7 +238,7 @@ Resultados obtenidos:
 | 419.45                 | 58     | 796    |
 
 
-Los gráficos mostraron una amplia variabilidad en la calidad del sueño entre usuarias. Esto refuerza la idea de que Bellabeat podría ofrecer funciones específicas para ayudar a mejorar la higiene del sueño, como rutinas nocturnas personalizadas o alertas para horarios de descanso óptimos.
+Los gráficos mostraron una amplia variabilidad en la calidad del sueño entre usuarios. Esto refuerza la idea de que Bellabeat podría ofrecer funciones específicas para ayudar a mejorar la higiene del sueño, como rutinas nocturnas personalizadas o alertas para horarios de descanso óptimos.
 
 ## Visualización de resultados
 
