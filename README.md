@@ -106,3 +106,97 @@ ON a.Id = b.Id AND DATE(a.ActivityDate) = DATE(b.SleepDay);
 ```
 
 Esta consulta permitió construir una tabla consolidada con datos clave sobre actividad, gasto calórico y sueño por usuario y por día.
+
+## Análisis de datos
+
+En esta sección se abordan las preguntas de investigación mediante consultas SQL realizadas en BigQuery, y se visualizan los resultados clave mediante gráficos generados en R utilizando `ggplot2`. El objetivo fue obtener hallazgos claros sobre la actividad física, el sueño, el gasto calórico y las oportunidades de segmentación entre usuarios.
+
+### 1. ¿Existen usuarios con niveles de actividad significativamente distintos?
+
+Se calcularon estadísticas descriptivas por usuario para observar la variación en el promedio de pasos y calorías diarias:
+
+```sql
+SELECT 
+  Id,
+  ROUND(AVG(TotalSteps), 2) AS promedio_pasos_diarios,
+  ROUND(AVG(Calories), 2) AS promedio_calorias_diarias
+FROM `capstonecaseofstudy.bellabeat_project.daily_activity_final`
+GROUP BY Id
+ORDER BY promedio_pasos_diarios DESC;
+
+A continuación se muestran las primeras filas resultantes de esta consulta:
+
+
+
+Estos valores se utilizaron para generar un gráfico de dispersión con línea de tendencia, observando que existen diferencias marcadas entre usuarias con respecto a su actividad física y su gasto energético. Esto evidencia la posibilidad de segmentar perfiles para estrategias personalizadas.
+
+### 2. ¿En qué momento del día la gente camina más?
+
+Se analizaron los pasos registrados por hora promedio entre todos los usuarios:
+
+```sql
+SELECT 
+  EXTRACT(HOUR FROM ActivityHour) AS hora,
+  ROUND(AVG(TotalSteps), 2) AS promedio_pasos
+FROM `capstonecaseofstudy.bellabeat_project.hourly_steps_merged`
+GROUP BY hora
+ORDER BY promedio_pasos DESC;
+```
+
+Los resultados se representaron mediante un gráfico de barras que muestra una mayor concentración de pasos entre las 17 y las 20 hs. Esto puede ser aprovechado por Bellabeat para enviar recordatorios o motivaciones en momentos estratégicos del día.
+
+### 3. ¿Existe una correlación entre pasos diarios, minutos de sueño y calorías quemadas?
+
+Se integraron las tablas de actividad y sueño por usuario y día para calcular la correlación entre variables:
+
+```sql
+SELECT 
+  CORR(a.TotalSteps, b.TotalMinutesAsleep) AS corr_pasos_sueno,
+  CORR(a.TotalSteps, a.Calories) AS corr_pasos_calorias,
+  CORR(b.TotalMinutesAsleep, a.Calories) AS corr_sueno_calorias
+FROM `capstonecaseofstudy.bellabeat_project.daily_activity_final` a
+JOIN `capstonecaseofstudy.bellabeat_project.sleep_day_merged_filtered` b
+ON a.Id = b.Id AND DATE(a.ActivityDate) = DATE(b.SleepDay);
+```
+
+Los valores de correlación fueron los siguientes:
+
+- **Pasos y calorías**: 0.44 (moderada correlación positiva)  
+- **Pasos y sueño**: -0.20 (correlación débil negativa)  
+- **Sueño y calorías**: -0.03 (sin correlación)
+
+Se graficaron estas relaciones mediante scatterplots con líneas de tendencia, para observar visualmente las correlaciones entre variables.
+
+### 4. ¿Se puede segmentar a los usuarios según sus niveles de actividad?
+
+Se calculó el promedio de pasos diarios por usuario y se clasificaron en distintos niveles de actividad:
+
+```sql
+SELECT
+  Id,
+  ROUND(AVG(TotalSteps), 2) AS promedio_pasos,
+  CASE
+    WHEN AVG(TotalSteps) < 5000 THEN 'Sedentario'
+    WHEN AVG(TotalSteps) BETWEEN 5000 AND 9999 THEN 'Moderadamente activo'
+    WHEN AVG(TotalSteps) >= 10000 THEN 'Altamente activo'
+  END AS nivel_actividad
+FROM `capstonecaseofstudy.bellabeat_project.daily_activity_final`
+GROUP BY Id;
+```
+
+Los resultados se visualizaron con un gráfico de barras para mostrar la distribución de usuarias por segmento. Esta segmentación puede ser útil para campañas dirigidas y recomendaciones personalizadas dentro de la app.
+
+### 5. ¿Cómo se distribuyen los hábitos de sueño entre usuarias?
+
+Se generaron estadísticas y visualizaciones de la cantidad de minutos dormidos por día:
+
+```sql
+SELECT 
+  ROUND(AVG(TotalMinutesAsleep), 2) AS promedio_minutos_sueno,
+  MIN(TotalMinutesAsleep) AS minimo,
+  MAX(TotalMinutesAsleep) AS maximo
+FROM `capstonecaseofstudy.bellabeat_project.sleep_day_merged_filtered`;
+```
+
+Los gráficos mostraron una amplia variabilidad en la calidad del sueño entre usuarias. Esto refuerza la idea de que Bellabeat podría ofrecer funciones específicas para ayudar a mejorar la higiene del sueño, como rutinas nocturnas personalizadas o alertas para horarios de descanso óptimos.
+
