@@ -1,6 +1,6 @@
 # Bellabeat Case Study
 
-## 📊 Resumen ejecutivo
+## Resumen ejecutivo
 
 Este proyecto de análisis de datos se centra en **Bellabeat**, una empresa de tecnología del bienestar que fabrica dispositivos inteligentes enfocados en la salud femenina. El objetivo es descubrir patrones de uso y comportamiento a partir de datos de dispositivos inteligentes (*smart devices*), y así ofrecer recomendaciones basadas en datos que puedan guiar futuras estrategias de marketing.
 
@@ -9,15 +9,15 @@ Se utilizaron herramientas como **SQL (BigQuery)**, **R (ggplot2)** y **Excel**,
 
 **A modo de aclaración, este proyecto forma parte de una de las opciones de *"capstone projects"* de Coursera en el ya mencionado *Google Data Analytics Professional Certificate*, donde se ha elegido trabajar de manera práctica e individualmente en la exploración del análisis de los datos para comenzar un portfolio profesional y técnico**
 
-## 🧭 Introducción
+## Introducción
 
 **Bellabeat** busca entender cómo las personas utilizan sus productos y qué comportamientos saludables pueden promover mediante sus estrategias. Este estudio parte de un conjunto de datos recopilados a través de dispositivos Fitbit, con la idea de tomar decisiones basadas en datos. Se han utilizado un total de 5 datasets, recopilando las acciones y actividades de un total de 23 usuarios en común.
 
-### 🎯 Objetivo principal
+### Objetivo principal
 
 Descubrir cómo los usuarios interactúan con los dispositivos y qué patrones de actividad física, sueño y consumo calórico se pueden identificar.
 
-### 📁 Justificación de la elección de datasets
+### Justificación de la elección de datasets
 
 Se eligieron datasets de uso diario de dispositivos Fitbit disponibles públicamente en Kaggle, ya que estos representan comportamientos reales de usuarios durante un período de 31 días. Estas fuentes fueron seleccionadas por su nivel de detalle en variables como pasos diarios, calorías quemadas, minutos activos y duración del sueño.
 
@@ -28,7 +28,7 @@ Estos datos permiten:
 
 Al trabajar con datos reales y continuos, se pueden generar conclusiones más relevantes para diseñar estrategias de marketing basadas en evidencia.
 
-## ⚙️ Metodología
+## Metodología
 
 El enfoque de este caso de estudio sigue las etapas del proceso de análisis de datos propuesto por Google:
 
@@ -39,7 +39,7 @@ El enfoque de este caso de estudio sigue las etapas del proceso de análisis de 
 5. **Share**: Visualización y presentación de resultados mediante gráficos.  
 6. **Act**: Generación de recomendaciones estratégicas para Bellabeat.
 
-## ❓ Preguntas de investigación: orientación del trabajo
+## Preguntas de investigación: orientación del trabajo
 
 - **¿Cómo se comportan los usuarios en términos de pasos, sueño y calorías quemadas?**  
   Esta pregunta permitió conocer los niveles generales de actividad, descanso y gasto energético. Fue clave para identificar tendencias, extremos y perfiles de usuario.
@@ -56,7 +56,7 @@ El enfoque de este caso de estudio sigue las etapas del proceso de análisis de 
 - **¿Qué oportunidades de negocio puede aprovechar Bellabeat con estos datos?**  
   Esta pregunta guió las recomendaciones finales del proyecto, basadas en hallazgos previos, apuntando a cómo Bellabeat puede optimizar sus productos y su estrategia de marketing.
 
-## 🧹 Preparación de los datos
+## Preparación de los datos
 
 Se trabajó con diversos archivos CSV provenientes de la plataforma Fitbit, correspondientes a usuarios que usaron el dispositivo durante 31 días. Las tablas más relevantes para este análisis fueron:
 
@@ -68,7 +68,7 @@ Se trabajó con diversos archivos CSV provenientes de la plataforma Fitbit, corr
 
 La combinación de estos tres conjuntos de datos facilita un análisis completo e integrado sobre salud, actividad y bienestar.
 
-## 🔧 Limpieza de los datos
+## Limpieza de los datos
 
 urante la fase de limpieza se llevaron a cabo diversas acciones para asegurar la calidad y consistencia de los datos:
 
