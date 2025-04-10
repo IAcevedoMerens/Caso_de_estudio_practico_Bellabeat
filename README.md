@@ -17,11 +17,11 @@ Se utilizaron herramientas como **SQL (BigQuery)**, **R (ggplot2)** y **Excel**,
 **Bellabeat** busca entender cómo las personas utilizan sus productos y qué comportamientos saludables pueden promover mediante sus estrategias. Este estudio parte de un conjunto de datos recopilados a través de dispositivos Fitbit, con la idea de tomar decisiones basadas en datos. Se han utilizado un total de 5 datasets, recopilando las acciones y actividades de un total de 23 usuarios en común.
 
 Los datasets iniciales han sido:
--`dailyActivity_merged_1`
--`dailyActivity_merged_2`
--`hourlySteps_merged_1`
--`hourlySteps_merged_2`
--`sleep_Day_merged`
+- `dailyActivity_merged_1`
+- `dailyActivity_merged_2`
+- `hourlySteps_merged_1`
+- `hourlySteps_merged_2`
+- `sleep_Day_merged`
 
 ### Objetivo principal
 
