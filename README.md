@@ -372,3 +372,11 @@ A partir de las correlaciones observadas entre pasos, sueño y calorías, se rec
 Detectar de manera automática a usuarios con baja cantidad de pasos o con pocos datos registrados (por ejemplo, días sin uso del dispositivo) permitiría generar alertas o sugerencias automáticas para retomar el uso del dispositivo, evitando la deserción y aumentando el engagement.
 
 ---
+
+## Conclusión
+
+Este proyecto permitió aplicar de forma integral el proceso de análisis de datos propuesto en el *Google Data Analytics Professional Certificate*, trabajando sobre un caso real proporcionado por Coursera: el análisis de datos de dispositivos Fitbit para la empresa Bellabeat.
+
+A lo largo del estudio se recorrieron todas las etapas del análisis de datos: formulación de preguntas, preparación y limpieza de datos, análisis exploratorio mediante SQL en BigQuery, visualización en R con `ggplot2` y generación de recomendaciones estratégicas.
+
+Se descubrieron patrones de comportamiento, diferencias entre usuarios y relaciones entre variables clave como pasos diarios, minutos de sueño y calorías quemadas. Estos hallazgos fueron fundamentales para proponer acciones concretas que Bellabeat podría implementar para mejorar su estrategia de producto y marketing.
