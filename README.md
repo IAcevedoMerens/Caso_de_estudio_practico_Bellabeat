@@ -329,7 +329,7 @@ A continuación, el gráfico final que contempla las estadísticas de correlaci�
 
 ### 4. Distribución de niveles de actividad
 
-A partir de la segmentación de usuarias según su nivel de pasos diarios, se generó un gráfico de barras para observar la distribución entre categorías.
+A partir de la segmentación de usuarios según su nivel de pasos diarios, se generó un gráfico de barras para observar la distribución entre categorías.
 
 ```r
 ggplot(segmentacion_usuarios, aes(x = nivel_actividad, fill = nivel_actividad)) +
@@ -353,7 +353,7 @@ A partir del análisis exploratorio, las visualizaciones realizadas y los patron
 
 ### 1. Personalización basada en el nivel de actividad
 
-Los datos muestran una alta variabilidad entre usuarios en cuanto a pasos diarios y calorías quemadas. Bellabeat puede segmentar a sus usuarios en grupos (sedentarios, ligeramente activos, activos,muy activos) y ofrecer planes personalizados que incluyan rutinas de actividad, recordatorios y metas adaptadas al perfil de cada uno.
+Los datos muestran una alta variabilidad entre usuarios en cuanto a pasos diarios y calorías quemadas. Bellabeat puede segmentar a sus usuarios en grupos (sedentarios, ligeramente activos, activos, muy activos) y ofrecer planes personalizados que incluyan rutinas de actividad, recordatorios y metas adaptadas al perfil de cada uno.
 
 ### 2. Envío de notificaciones en momentos de alta actividad
 
