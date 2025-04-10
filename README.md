@@ -1,5 +1,7 @@
 # Bellabeat Case Study
 
+---
+
 ## Resumen ejecutivo
 
 Este proyecto de análisis de datos se centra en **Bellabeat**, una empresa de tecnología del bienestar que fabrica dispositivos inteligentes enfocados en la salud femenina. El objetivo es descubrir patrones de uso y comportamiento a partir de datos de dispositivos inteligentes (*smart devices*), y así ofrecer recomendaciones basadas en datos que puedan guiar futuras estrategias de marketing.
@@ -7,6 +9,8 @@ Este proyecto de análisis de datos se centra en **Bellabeat**, una empresa de t
 Se utilizaron herramientas como **SQL (BigQuery)**, **R (ggplot2)** y **Excel**, aplicando el enfoque del proceso analítico propuesto en el curso profesional de Google:  *Google Data Analytics Professional Certificate*.
 
 **Este proyecto fue desarrollado como parte del capstone project del programa oficial Google Data Analytics Professional Certificate dictado por Coursera. Se trabajó de manera práctica e individual aplicando todo el proceso de análisis de datos sobre un caso real, con el objetivo de comenzar a construir un portfolio profesional y técnico como analista de datos.**
+
+---
 
 ## Introducción
 
@@ -27,6 +31,8 @@ Estos datos permiten:
 
 Al trabajar con datos reales y continuos, se pueden generar conclusiones más relevantes para diseñar estrategias de marketing basadas en evidencia.
 
+---
+
 ## Metodología
 
 El enfoque de este caso de estudio sigue las etapas del proceso de análisis de datos propuesto por Google:
@@ -37,6 +43,8 @@ El enfoque de este caso de estudio sigue las etapas del proceso de análisis de 
 4. **Analyze**: Análisis exploratorio y segmentación en R.  
 5. **Share**: Visualización y presentación de resultados mediante gráficos.  
 6. **Act**: Generación de recomendaciones estratégicas para Bellabeat.
+
+---
 
 ## Preguntas de investigación: orientación del trabajo
 
@@ -55,6 +63,8 @@ El enfoque de este caso de estudio sigue las etapas del proceso de análisis de 
 - **¿Qué oportunidades de negocio puede aprovechar Bellabeat con estos datos?**  
   Esta pregunta guió las recomendaciones finales del proyecto, basadas en hallazgos previos, apuntando a cómo Bellabeat puede optimizar sus productos y su estrategia de marketing.
 
+---
+
 ## Preparación de los datos
 
 Se trabajó con diversos archivos CSV provenientes de la plataforma Fitbit, correspondientes a usuarios que usaron el dispositivo durante 31 días. Las tablas más relevantes para este análisis fueron:
@@ -66,6 +76,8 @@ Se trabajó con diversos archivos CSV provenientes de la plataforma Fitbit, corr
 - **`hourly_steps`**: contiene el número de pasos dados por usuario en intervalos horarios. Permite analizar patrones de actividad a lo largo del día, identificar las horas más activas, y cruzar esa información con otros indicadores de comportamiento.
 
 La combinación de estos tres conjuntos de datos facilita un análisis completo e integrado sobre salud, actividad y bienestar.
+
+---
 
 ## Limpieza de los datos
 
@@ -105,6 +117,8 @@ ON a.Id = b.Id AND DATE(a.ActivityDate) = DATE(b.SleepDay);
 ```
 
 Esta consulta permitió construir una tabla consolidada con datos clave sobre actividad, gasto calórico y sueño por usuario y por día.
+
+---
 
 ## Análisis de datos
 
@@ -241,6 +255,8 @@ A continuación se muestra una muestra representativa del resultado:
 
 Los resultados se visualizaron con un gráfico de barras para mostrar la distribución de usuarias por segmento. Esta segmentación puede ser útil para campañas dirigidas y recomendaciones personalizadas dentro de la app.
 
+---
+
 ## Visualización de resultados
 
 Los resultados obtenidos a través de consultas SQL en BigQuery fueron exportados como archivos `.csv`, que luego se importaron a R para realizar las visualizaciones utilizando `ggplot2`. Cada visualización fue diseñada con el objetivo de responder a las preguntas planteadas en la sección de análisis y mostrar de manera clara las tendencias más relevantes.
@@ -332,4 +348,6 @@ ggplot(segmentacion_usuarios, aes(x = nivel_actividad, fill = nivel_actividad)) 
 ```
 
 [![segmentacionplot.png](https://i.postimg.cc/Vky8dQ2C/segmentacionplot.png)](https://postimg.cc/QHqPyP88)
+
+---
 
