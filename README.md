@@ -62,7 +62,7 @@ El enfoque de este caso de estudio sigue las etapas del proceso de análisis de 
   Ayudó a determinar en qué momentos del día las personas son más activas, lo que podría ser útil para estrategias de comunicación o recordatorios dentro de la app.
 
 - **¿Se puede segmentar a los usuarios según sus niveles de actividad?**  
-  Esta segmentación permitió clasificar a las usuarias en distintos grupos (sedentarias, activas, etc.), con el objetivo de proponer recomendaciones personalizadas.
+  Esta segmentación permitió clasificar a los usuarios en distintos grupos (sedentarios, activos, etc.), con el objetivo de proponer recomendaciones personalizadas.
 
 - **¿Qué correlaciones existen entre sueño, pasos y calorías?**  
   Se buscó explorar si existía una relación directa entre la duración del sueño, el nivel de actividad y el consumo energético, para entender mejor los hábitos saludables.
@@ -96,16 +96,6 @@ Durante la fase de limpieza se llevaron a cabo diversas acciones para asegurar l
 - **Filtrado por ID común**: se conservaron únicamente aquellos usuarios (`Id`) presentes en todos los datasets utilizados, para garantizar coherencia en el análisis cruzado.
 - **Eliminación de duplicados**: se removieron registros repetidos por usuario y fecha u hora, cuando correspondiera.
 
-A modo de ejemplo, la siguiente consulta en **BigQuery** se utilizó para identificar registros duplicados en los datos por hora:
-
-Durante la fase de limpieza se llevaron a cabo diversas acciones para asegurar la calidad y consistencia de los datos:
-
-- **Eliminación de valores nulos**: se descartaron filas con registros faltantes en columnas clave como `TotalSteps`, `Calories` o `TotalMinutesAsleep`.
-- **Formateo de fechas**: se estandarizó el formato de fecha y hora para permitir comparaciones entre tablas, por ejemplo entre `ActivityDate` y `SleepDay`.
-- **Unificación de nombres de columnas**: se renombraron variables para facilitar un análisis coherente entre tablas que contienen información similar (`StepTotal` se convirtió en `TotalSteps`).
-- **Filtrado por ID común**: se conservaron únicamente aquellos usuarios (`Id`) presentes en todos los datasets utilizados, para garantizar coherencia en el análisis cruzado.
-- **Eliminación de duplicados**: se removieron registros repetidos por usuario y fecha u hora, cuando correspondiera.
-
 Una vez finalizado este proceso, se crearon versiones limpias y estandarizadas de cada tabla, y posteriormente se integraron mediante claves comunes (`Id`, `Date`) para formar una de las tablas finales de análisis: `daily_activity_final`, combinada con `sleep_day_merged_filtered`.
 
 A continuación, se muestra un ejemplo de consulta SQL utilizada en BigQuery para realizar esta integración:
@@ -129,7 +119,7 @@ Esta consulta permitió construir una tabla consolidada con datos clave sobre ac
 
 ## Análisis de datos
 
-En esta sección se abordan las preguntas de investigación mediante consultas SQL realizadas en BigQuery, y se visualizan los resultados clave mediante gráficos generados en R utilizando `ggplot2`. El objetivo fue obtener hallazgos claros sobre la actividad física, el sueño, el gasto calórico y las oportunidades de segmentación entre usuarios.
+En esta sección se abordan las preguntas de investigación mediante consultas SQL realizadas en BigQuery. El objetivo fue obtener hallazgos claros sobre la actividad física, el sueño, el gasto calórico y las oportunidades de segmentación entre usuarios.
 
 ### 1. ¿Existen usuarios con niveles de actividad significativamente distintos?
 
@@ -156,8 +146,7 @@ A continuación se muestran las primeras filas resultantes de esta consulta:
 | 3977333714 | 10321.52               | 1480.64                   |
 
 
-
-Estos valores se utilizaron para generar un gráfico de dispersión con línea de tendencia, observando que existen diferencias marcadas entre usuarias con respecto a su actividad física y su gasto energético. Esto evidencia la posibilidad de segmentar perfiles para estrategias personalizadas.
+Estos valores se utilizaron para generar un gráfico de dispersión con línea de tendencia, observando que existen diferencias marcadas entre usuarios con respecto a su actividad física y su gasto energético. Esto evidencia la posibilidad de segmentar perfiles para estrategias personalizadas.
 
 ### 2. ¿En qué momento del día la gente camina más?
 
@@ -270,7 +259,7 @@ Los resultados obtenidos a través de consultas SQL en BigQuery fueron exportado
 
 ### 1. Dispersión entre pasos y calorías por usuario
 
-Esta visualización parte del promedio de pasos y calorías diarios por usuaria. El objetivo es identificar visualmente la existencia de patrones o grupos diferenciados.
+Esta visualización parte del promedio de pasos y calorías diarios por usuario. El objetivo es identificar visualmente la existencia de patrones o grupos diferenciados.
 
 ```r
 ggplot(estadisticas_1, aes(x = promedio_pasos_diarios, y = promedio_calorias_diarias)) +
@@ -364,7 +353,7 @@ A partir del análisis exploratorio, las visualizaciones realizadas y los patron
 
 ### 1. Personalización basada en el nivel de actividad
 
-Los datos muestran una alta variabilidad entre usuarios en cuanto a pasos diarios y calorías quemadas. Bellabeat puede segmentar a sus usuarios en grupos (sedentarios, moderadamente activos, altamente activos) y ofrecer planes personalizados que incluyan rutinas de actividad, recordatorios y metas adaptadas al perfil de cada uno.
+Los datos muestran una alta variabilidad entre usuarios en cuanto a pasos diarios y calorías quemadas. Bellabeat puede segmentar a sus usuarios en grupos (sedentarios, ligeramente activos, activos,muy activos) y ofrecer planes personalizados que incluyan rutinas de actividad, recordatorios y metas adaptadas al perfil de cada uno.
 
 ### 2. Envío de notificaciones en momentos de alta actividad
 
