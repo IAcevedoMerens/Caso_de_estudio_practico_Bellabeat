@@ -364,22 +364,22 @@ A partir del análisis exploratorio, las visualizaciones realizadas y los patron
 
 ### 1. Personalización basada en el nivel de actividad
 
-Los datos muestran una alta variabilidad entre usuarias en cuanto a pasos diarios y calorías quemadas. Bellabeat puede segmentar a sus usuarias en grupos (sedentarias, moderadamente activas, altamente activas) y ofrecer planes personalizados que incluyan rutinas de actividad, recordatorios y metas adaptadas al perfil de cada una.
+Los datos muestran una alta variabilidad entre usuarios en cuanto a pasos diarios y calorías quemadas. Bellabeat puede segmentar a sus usuarios en grupos (sedentarios, moderadamente activos, altamente activos) y ofrecer planes personalizados que incluyan rutinas de actividad, recordatorios y metas adaptadas al perfil de cada uno.
 
 ### 2. Envío de notificaciones en momentos de alta actividad
 
-El análisis horario reveló que la mayor parte de las usuarias camina entre las 17 y las 20 hs. Este hallazgo puede ser aprovechado por Bellabeat para programar notificaciones motivacionales en ese horario, reforzando hábitos saludables e impulsando la interacción con la app.
+El análisis horario reveló que la mayor parte de las usuarios camina entre las 17 y las 19 hs. Este hallazgo puede ser aprovechado por Bellabeat para programar notificaciones motivacionales en ese horario, reforzando hábitos saludables e impulsando la interacción con la app.
 
 ### 3. Fomentar el seguimiento del sueño
 
-Se detectó una amplia dispersión en la duración del sueño entre usuarias. Bellabeat podría ofrecer funciones enfocadas en la calidad del descanso, como recomendaciones para mejorar la higiene del sueño, recordatorios de horarios óptimos para dormir y visualizaciones más claras del progreso en la aplicación.
+Se detectó una amplia dispersión en la duración del sueño entre usuarios. Bellabeat podría ofrecer funciones enfocadas en la calidad del descanso, como recomendaciones para mejorar la higiene del sueño, recordatorios de horarios óptimos para dormir y visualizaciones más claras del progreso en la aplicación.
 
 ### 4. Visualizaciones intuitivas para el usuario final
 
 A partir de las correlaciones observadas entre pasos, sueño y calorías, se recomienda incluir en la app visualizaciones simples pero efectivas para que el usuario pueda comprender sus propios patrones. Mostrar, por ejemplo, cómo varía el descanso según el nivel de actividad o cómo impacta el movimiento en el gasto calórico diario.
 
-### 5. Incorporar alertas para usuarias inactivas
+### 5. Incorporar alertas para usuarios inactivos
 
-Detectar de manera automática a usuarias con baja cantidad de pasos o con pocos datos registrados (por ejemplo, días sin uso del dispositivo) permitiría generar alertas o sugerencias automáticas para retomar el uso del dispositivo, evitando la deserción y aumentando el engagement.
+Detectar de manera automática a usuarios con baja cantidad de pasos o con pocos datos registrados (por ejemplo, días sin uso del dispositivo) permitiría generar alertas o sugerencias automáticas para retomar el uso del dispositivo, evitando la deserción y aumentando el engagement.
 
 ---
