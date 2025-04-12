@@ -232,24 +232,25 @@ SELECT
   Id,
   ROUND(AVG(TotalSteps), 2) AS promedio_pasos,
   CASE
-    WHEN AVG(TotalSteps) < 5000 THEN 'Sedentario'
-    WHEN AVG(TotalSteps) BETWEEN 5000 AND 9999 THEN 'Moderadamente activo'
-    WHEN AVG(TotalSteps) >= 10000 THEN 'Altamente activo'
+    WHEN AVG(TotalSteps) < 4999 THEN 'Sedentario'
+    WHEN AVG(TotalSteps) BETWEEN 5000 AND 7499 THEN 'Ligeramente activo'
+    WHEN AVG(TotalSteps) BETWEEN 7500 AND 9999 THEN 'Activo'
+    WHEN AVG(TotalSteps) >= 10000 THEN 'Muy activo'
   END AS nivel_actividad
 FROM `capstonecaseofstudy.bellabeat_project.daily_activity_final`
 GROUP BY Id;
 ```
-A continuación se muestra una muestra representativa del resultado:
+A continuación, una muestra representativa del resultado:
 
 | Id         | promedio_pasos | nivel_actividad       |
 |------------|----------------|------------------------|
-| 1503960366 | 11935.78       | Altamente activo       |
-| 7007744171 | 11619.29       | Altamente activo       |
-| 8053475328 | 14784.52       | Altamente activo       |
-| 2026352035 | 4960.14        | Moderadamente activo   |
+| 1503960366 | 11935.78       | Muy activo             |
+| 7007744171 | 11619.29       | Muy activo             |
+| 8053475328 | 14784.52       | Muy activo             |
+| 2026352035 | 4960.14        | Sedentario             |
 | 1844505072 | 2876.02        | Sedentario             |
 
-Los resultados se visualizaron con un gráfico de barras para mostrar la distribución de usuarias por segmento. Esta segmentación puede ser útil para campañas dirigidas y recomendaciones personalizadas dentro de la app.
+Los resultados se visualizaron con un gráfico de barras para mostrar la distribución de usuarios por segmento. Esta segmentación puede ser útil para campañas dirigidas y recomendaciones personalizadas dentro de la app.
 
 ---
 
